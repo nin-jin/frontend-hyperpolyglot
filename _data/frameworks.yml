@@ -286,7 +286,7 @@
   comparisons:
   - label: Set initial state
     frameworks:
-      mol: > foo 1
+      mol: "foo 1"
       react:
         js: "getIntitialState = () => { foo: 1 }"
       angular2:
@@ -305,7 +305,7 @@
   - label: Set state
     frameworks:
       mol:
-        js: this.foo( 2 )
+        js: "this.foo( 2 )"
       react:
         js: "this.setState({ foo: 2 })"
       angular2:
