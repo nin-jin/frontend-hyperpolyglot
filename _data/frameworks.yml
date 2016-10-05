@@ -234,7 +234,7 @@
       riot: <child foo='bar' />
   - label: Two-way binding (native)
     frameworks:
-      mol: $my_viewer\n\ttagName \input\n\tfield * value < bar\n\tevent * input > eventChange
+      mol: "$my_viewer\n\ttagName \input\n\tfield * value < bar\n\tevent * input > eventChange"
       react:
         comment: not supported
       angular2: <input [(ngModel)]="foo" />
