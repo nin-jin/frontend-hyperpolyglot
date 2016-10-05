@@ -446,7 +446,7 @@
   - label: Prop validate Object
     frameworks:
       mol:
-        js: myObj() { return { a : 0 , b : '' } }
+        js: "myObj() { return { a : 0 , b : '' } }"
       react:
         js: "{myObj: React.PropTypes.object}"
       angular2:
@@ -464,7 +464,7 @@
   - label: Prop validate union
     frameworks:
       mol:
-        js: myObj() { return < string | number > null }
+        js: "myObj() { return < string | number > null }"
       react:
         js: "{myVar: React.PropTypes.oneOfType([\n  React.PropTypes.string, \n  React.PropTypes.number\n])}"
       angular2:
