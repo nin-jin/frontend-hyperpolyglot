@@ -130,7 +130,7 @@
   - label: DOM add/remove
     frameworks:
       mol:
-        js: this.shouldShow() ? this.content() : null
+        js: "this.shouldShow() ? this.content() : null"
       react: "{shouldShow && <div />}"
       angular2: <div *ngIf="shouldShow">
       angular1: <div ng-if='shouldShow'>
