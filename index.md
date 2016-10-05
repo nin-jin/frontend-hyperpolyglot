@@ -3,11 +3,11 @@ layout: default
 title: Front-end Hyperpolyglot
 ---
 
-# [Front-end Hyperpolyglot](http://jeffcarp.github.io/frontend-hyperpolyglot/)
+# [Front-end Hyperpolyglot](http://nin-jin.github.io/frontend-hyperpolyglot/)
 
 _Inspired by [hyperpolyglot.org](http://hyperpolyglot.org/), a comparison of similar features in popular JavaScript frameworks._
 
-<p>Any contributors who are more familiar with these frameworks would be massively appreciated. The source is on <a href="https://github.com/jeffcarp/frontend-hyperpolyglot">GitHub</a>.</p>
+<p>Any contributors who are more familiar with these frameworks would be massively appreciated. The source is on <a href="https://github.com/nin-jin/frontend-hyperpolyglot">GitHub</a>.</p>
 
 <table class="wiki-content-table">
   {% for category in site.data.frameworks %}

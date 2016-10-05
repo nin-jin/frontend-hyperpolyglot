@@ -2,6 +2,7 @@
   comparisons:
   - label: Version used
     frameworks:
+      mol: 1.0
       react: 15.0.2
       angular2: 2.0.0-beta.17
       angular1: 1.5.5
@@ -11,6 +12,7 @@
       riot: 2.4.1
   - label: Language used
     frameworks:
+      mol: TypeScript
       react: ES6
       angular2: TypeScript
       angular1: ES5
@@ -23,6 +25,7 @@
   comparisons:
   - label: Text interpolation
     frameworks:
+      $mol: < message
       react: "{ message }"
       angular2: "{{ message }}"
       angular1: "{{ message }}"
@@ -34,6 +37,8 @@
       - **Polymer:** see [Binding to text content](https://www.polymer-project.org/1.0/docs/devguide/data-binding.html#binding-to-text-content).
   - label: Transform interpolation
     frameworks:
+      mol:
+        comment: not supported
       react: "{ filter(message) }"
       angular2: "{{ message | filter }}"
       angular1: "{{ message | filter }}"
@@ -48,6 +53,8 @@
       - **Ember:** See [Helpers](https://guides.emberjs.com/v2.5.0/templates/handlebars-basics/#toc_helpers)
   - label: Transform with arguments
     frameworks:
+      mol:
+        comment: not supported
       react: "{ filter(message, 'arg1', arg2) }"
       angular2: "{{ message | filter:'arg1':arg2 }}"
       angular1: "{{ message | filter:'arg1':arg2 }}"
@@ -62,6 +69,7 @@
       - **Ember:** See [Helpers](https://guides.emberjs.com/v2.5.0/templates/handlebars-basics/#toc_helpers)
   - label: Bind text content
     frameworks:
+      mol: < message
       react: <div textContent={message}>
       angular2: <div [textContent]="message">
       angular1: <div ng-bind="message">
@@ -76,6 +84,7 @@
       - **Polymer:** See [Annotated attribute binding](https://www.polymer-project.org/1.0/docs/devguide/data-binding.html#attribute-binding.)
   - label: Bind href
     frameworks:
+      mol: attr * href < url
       react: <a href={ url }></a>
       angular2: <a [href]="url"></a>
       angular1: <a ng-href="{{ url }}"></a>
@@ -90,6 +99,7 @@
       - **Vue:** See [Directives > Arguments](https://vuejs.org/guide/syntax.html#Arguments).
   - label: Dangerous raw HTML output
     frameworks:
+      mol: field * innerHTML < rawHtml
       react: "<div \n  dangerouslySetInnerHTML={{\n    __html: raw_html\n  }} />"
       angular2: <div [innerHTML]="raw_html">
       angular1: <div ng-bind-html="raw_html">
@@ -106,6 +116,7 @@
       - **Riot:** Riot doesn't directly support this, though you can set `innerHTML` using `this.root.querySelector`
   - label: Bind attribute value
     frameworks:
+      mol: attr * id < itemId
       react: <div id={'item-' + id}>
       angular2: <div id="item-{{ id }}">
       angular1: <div id="item-{{ id }}">
@@ -118,6 +129,8 @@
       - **Vue:** See [Attributes](https://vuejs.org/guide/syntax.html#Attributes)
   - label: DOM add/remove
     frameworks:
+      mol:
+        js: this.shouldShow() ? this.content() : null
       react: "{shouldShow && <div />}"
       angular2: <div *ngIf="shouldShow">
       angular1: <div ng-if='shouldShow'>
@@ -129,6 +142,8 @@
       - **Angular 2:** See [Angular Cheat Sheet](https://angular.io/docs/ts/latest/guide/cheatsheet.html).
   - label: Repeat
     frameworks:
+      mol:
+        js: this.items().map( item => this.item( item.key ) )
       react: "items.map(item =>\n  <div key={item.id} />\n)"
       angular2: <div *ngFor="let item of items">
       angular1: <div ng-repeat="item in items">
@@ -141,6 +156,7 @@
       - **Polymer:** See [Template repeater (`dom-repeat`)](https://www.polymer-project.org/1.0/docs/devguide/templates.html#dom-repeat).
   - label: Bind event handler
     frameworks:
+      mol: event * click > eventClick
       react: <button onClick={clicked}>
       angular2: <button (click)="clicked()">
       angular1: <button ng-click="clicked()">
@@ -155,6 +171,7 @@
   comparisons:
   - label: Define component ES6
     frameworks:
+      mol: $my_polyglot $mol_viewer
       react:
         js: class Polyglot extends React.Component
       angular2:
@@ -173,6 +190,7 @@
       - **Vue:** See gist: [Vue.js + ES6](https://gist.github.com/k33g/f4ea54b6a2cf9555b959)
   - label: Define component ES5
     frameworks:
+      mol: $my_polyglot $mol_viewer
       react:
         js: React.createClass({})
       angular2:
@@ -194,6 +212,7 @@
   comparisons:
   - label: One-way data binding
     frameworks:
+      mol: $my_child foo < bar
       react: <Child foo={bar} />
       angular2: <Child [foo]="bar" />
       angular1: <Child foo="{{ bar }}" />
@@ -205,6 +224,7 @@
       - **Polymer:** The child component must also be set up to treat the property as read-only. Learn more about [data binding in Polymer](https://www.polymer-project.org/1.0/docs/devguide/data-binding.html).
   - label: String literal prop
     frameworks:
+      mol: $my_child foo \bar
       react: <Child foo='bar' />
       angular2: <Child foo='bar' />
       angular1: <Child foo='bar' />
@@ -214,6 +234,7 @@
       riot: <child foo='bar' />
   - label: Two-way binding (native)
     frameworks:
+      mol: $my_viewer\n\ttagName \input\n\tfield * value < bar\n\tevent * input > eventChange
       react:
         comment: not supported
       angular2: <input [(ngModel)]="foo" />
@@ -227,6 +248,7 @@
       - **Polymer:** See [Two-way binding to native elements](https://www.polymer-project.org/1.0/docs/devguide/data-binding.html#two-way-native).
   - label: Two-way binding (components)
     frameworks:
+      mol: $my_child foo > bar
       react:
         comment: not supported
       angular2: <Child [(foo)]="bar" />
@@ -240,6 +262,8 @@
       - **Polymer:** See [Property change notification and two-way binding](https://www.polymer-project.org/1.0/docs/devguide/data-binding.html#property-notification).
   - label: One-time binding
     frameworks:
+      mol:
+        comment: not supported
       react:
         comment: not supported
       angular2:
@@ -262,6 +286,7 @@
   comparisons:
   - label: Set initial state
     frameworks:
+      mol: > foo 1
       react:
         js: "getIntitialState = () => { foo: 1 }"
       angular2:
@@ -279,6 +304,8 @@
     remarks:
   - label: Set state
     frameworks:
+      mol:
+        js: this.foo( 2 )
       react:
         js: "this.setState({ foo: 2 })"
       angular2:
@@ -298,6 +325,8 @@
   comparisons:
   - label: Prop validation key
     frameworks:
+      mol:
+        comment: TypeScript static type checking
       react:
         js: "{propTypes: {}}"
       angular2:
@@ -330,6 +359,7 @@
       - **Ember:** Learn more about [prop validation in Ember](https://github.com/ciena-blueplanet/ember-prop-types).
   - label: Prop validate Number
     frameworks:
+      mol: myNum 0
       react:
         js: "{myNum: React.PropTypes.number}"
       angular2:
@@ -346,6 +376,7 @@
         comment: (no prop types)
   - label: Prop validate String
     frameworks:
+      mol: myStr \\
       react:
         js: "{myStr: React.PropTypes.string}"
       angular2:
@@ -362,6 +393,7 @@
         comment: (no prop types)
   - label: Prop validate Array
     frameworks:
+      mol: myArray /
       react:
         js: "{myArr: React.PropTypes.array}"
       angular2:
@@ -378,6 +410,7 @@
         comment: (no prop types)
   - label: Prop validate Boolean
     frameworks:
+      mol: myBool false
       react:
         js: "{myBool: React.PropTypes.bool}"
       angular2:
@@ -394,6 +427,8 @@
         comment: (no prop types)
   - label: Prop validate Function
     frameworks:
+      mol:
+        js: myFunc() { return ()=> 1 }
       react:
         js: "{myFunc: React.PropTypes.func}"
       angular2:
@@ -410,6 +445,8 @@
         comment: (no prop types)
   - label: Prop validate Object
     frameworks:
+      mol:
+        js: myObj() { return { a : 0 , b : '' } }
       react:
         js: "{myObj: React.PropTypes.object}"
       angular2:
@@ -426,6 +463,8 @@
         comment: (no prop types)
   - label: Prop validate union
     frameworks:
+      mol:
+        js: myObj() { return < string | number > null }
       react:
         js: "{myVar: React.PropTypes.oneOfType([\n  React.PropTypes.string, \n  React.PropTypes.number\n])}"
       angular2:
@@ -447,6 +486,7 @@
   comparisons:
   - label: Initialized
     frameworks:
+      mol: constructor
       react: componentWillMount
       angular2: ngOnInit
       angular1: $onInit
@@ -459,6 +499,7 @@
       - **Angular 1:** See [https://docs.angularjs.org/guide/component#component-based-application-architecture](https://docs.angularjs.org/guide/component#component-based-application-architecture).
   - label: DOM Ready
     frameworks:
+      mol: DOMTree
       react: componentDidMount
       angular2: ngAfterContentInit
       angular1: $postLink
@@ -470,6 +511,8 @@
       - **React:** [`componentDidMount`](https://facebook.github.io/react/docs/component-specs.html#mounting-componentdidmount)
   - label: On prop change
     frameworks:
+      mol:
+        comment: not needed
       react: willReceiveProps
       angular2: ngOnChanges
       angular1: $onChanges
@@ -483,6 +526,8 @@
       - **React:** [`willReceiveProps`](https://facebook.github.io/react/docs/component-specs.html#mounting-willreceiveprops)
   - label: Component updated
     frameworks:
+      mol:
+        comment: none
       react: componentDidUpdate
       angular2:
         comment: none
@@ -498,6 +543,7 @@
       - **React:** [`componentDidUpdate`](https://facebook.github.io/react/docs/component-specs.html#mounting-componentdidupdate)
   - label: Before destroy
     frameworks:
+      mol: destroyed
       react: componentWillUnmount
       angular2:
         comment: none
@@ -511,6 +557,7 @@
       - **React:** [`componentWillUnmount`](https://facebook.github.io/react/docs/component-specs.html#mounting-componentwillunmount)
   - label: After destroy
     frameworks:
+      mol: destroyed
       react:
         comment: none
       angular2: ngOnDestroy
